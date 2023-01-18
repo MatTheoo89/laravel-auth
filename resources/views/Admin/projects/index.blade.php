@@ -31,11 +31,14 @@
                     <td class="text-white">{{$project->summary}}</td>
                     <td class="text-white">
                         <a class="btn btn-info" href=""><i class="fa-regular fa-eye"></i></a>
-                        <a class="btn btn-warning" href=""><i class="fa-solid fa-pen-to-square"></i></a>
-                        <form action="" method="post">
+                        <a class="btn btn-warning" href="{{route('admin.projects.edit', $project)}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <form
+                            onsubmit="return confirm('Confermi l\'eliminazione di : {{$project->name}}')"
+                            action="{{route('admin.projects.destroy', $project)}}"
+                            method="post">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="d-inline btn btn-danger" href=""><i class="fa-regular fa-trash-can"></i></button>
+                            <button type="submit" class="d-inline btn btn-danger"><i class="fa-regular fa-trash-can"></i></button>
                         </form>
                     </td>
                 </tr>
