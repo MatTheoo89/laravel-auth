@@ -30,7 +30,7 @@
                     <td class="text-white">{{$project->client_name}}</td>
                     <td class="text-white">{{$project->summary}}</td>
                     <td class="text-white">
-                        <a class="btn btn-info" href=""><i class="fa-regular fa-eye"></i></a>
+                        <a class="btn btn-info" href="{{route('admin.projects.show', $project)}}"><i class="fa-regular fa-eye"></i></a>
                         <a class="btn btn-warning" href="{{route('admin.projects.edit', $project)}}"><i class="fa-solid fa-pen-to-square"></i></a>
                         <form
                             onsubmit="return confirm('Confermi l\'eliminazione di : {{$project->name}}')"
