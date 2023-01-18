@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid text-end">
-    <a class="btn btn-success me-5 my-5" href=""><i class="fa-solid fa-plus"></i> New project</a>
+    <a class="btn btn-success me-5 my-5" href="{{route('admin.projects.create')}}"><i class="fa-solid fa-plus"></i> New project</a>
 </div>
     <div class="container my-5">
         <h1 class="text-center">My projets</h1>
