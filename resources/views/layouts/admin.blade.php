@@ -59,6 +59,14 @@
                         </li>
                         @endif
                         @else
+                        <li>
+                            <form  action="{{route('admin.projects.index')}}" method="GET">
+                                @csrf
+                                <input class="form-control d-inline-block w-75" name="search" type="text" placeholder="Cosa cerchi?">
+                                <button class="btn btn-info" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </form>
+        
+                        </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}

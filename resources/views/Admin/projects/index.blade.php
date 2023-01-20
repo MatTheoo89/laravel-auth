@@ -9,6 +9,7 @@
     </div>
     <div class="my-container">
         <table class="table align-middle">
+            @if (empty($projects))
             <thead>
                 <tr>
                     <th class="text-white text-center" scope="col">ID</th>
@@ -19,25 +20,31 @@
                     <th class="text-white text-center" style="width: 175px;" scope="col">AZIONI</th>
                 </tr>
             </thead>
+            @endif
             <tbody>
-                @foreach ($projects as $project)
-                <tr>
-                    <td class="text-white">{{$project->id}}</td>
-                    <td class="text-white">
-                        <img src="{{$project->cover_image}}" alt="" class="thumb">
-                    </td>
-                    <td class="text-white">{{$project->name}}</td>
-                    <td class="text-white">{{$project->client_name}}</td>
-                    <td class="text-white"> {{$project->summary}}</td>
-                    <td class="text-white text-center" style="width: 175px;">
-                        <a class="btn btn-info" href="{{route('admin.projects.show', $project)}}"><i class="fa-regular fa-eye"></i></a>
-                        <a class="btn btn-warning" href="{{route('admin.projects.edit', $project)}}"><i class="fa-solid fa-pen-to-square"></i></a>
-                        @include('Admin.partials.form-delete')
-                    </td>
-                </tr>
-                @endforeach
+                @forelse ($projects as $project)
+                    <tr>
+                        <td class="text-white">{{$project->id}}</td>
+                        <td class="text-white">
+                            <img src="{{$project->cover_image}}" alt="" class="thumb">
+                        </td>
+                        <td class="text-white">{{$project->name}}</td>
+                        <td class="text-white">{{$project->client_name}}</td>
+                        <td class="text-white"> {{$project->summary}}</td>
+                        <td class="text-white text-center" style="width: 175px;">
+                            <a class="btn btn-info" href="{{route('admin.projects.show', $project)}}"><i class="fa-regular fa-eye"></i></a>
+                            <a class="btn btn-warning" href="{{route('admin.projects.edit', $project)}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                            @include('Admin.partials.form-delete')
+                        </td>
+                    </tr>
+                @empty
+                    <h2>Nesun risultato</h2>
+                @endforelse
 
             </tbody>
         </table>
+        <div>
+            {{ $projects->links() }}
+        </div>
     </div>
 @endsection

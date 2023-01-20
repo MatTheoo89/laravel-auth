@@ -16,7 +16,12 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        if(isset($_GET['search'])){
+            $search = $_GET['search'];
+            $projects = Project::where('name','like',"%$search%")->paginate(10);
+        }else{
+            $projects = Project::paginate(10);
+        }
         return view('Admin.projects.index', compact('projects'));
     }
 
@@ -41,14 +46,16 @@ class ProjectController extends Controller
         // dd($request);
         $data = $request->all();
         
-        $new_item = new Project();
-        
         $data['slug'] = Project::generateSlug($data['name']);
         
-        $new_item->fill($data);
+        // $new_item = new Project();
         
-        // dd($new_item);
-        $new_item->save();
+        // $new_item->fill($data);
+        
+        // // dd($new_item);
+        // $new_item->save();
+
+        $new_item = Project::create($data);
 
         return redirect(route('admin.projects.index'));
     }
