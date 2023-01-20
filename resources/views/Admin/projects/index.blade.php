@@ -32,15 +32,7 @@
                     <td class="text-white text-center" style="width: 175px;">
                         <a class="btn btn-info" href="{{route('admin.projects.show', $project)}}"><i class="fa-regular fa-eye"></i></a>
                         <a class="btn btn-warning" href="{{route('admin.projects.edit', $project)}}"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <form
-                        class="d-inline"
-                            onsubmit="return confirm('Confermi l\'eliminazione di : {{$project->name}}')"
-                            action="{{route('admin.projects.destroy', $project)}}"
-                            method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button>
-                        </form>
+                        @include('Admin.partials.form-delete')
                     </td>
                 </tr>
                 @endforeach

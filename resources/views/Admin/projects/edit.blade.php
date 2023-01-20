@@ -67,10 +67,9 @@
                 </div>
                 <div class="mb-3">
                     <label for="summary" class="form-label">summary *</label>
-                    <textarea   class="form-control @error('summary') is-invalid @enderror"
-                                id="summary"
-                                name="summary"
-                                rows="5">{{old('summary', $project->description)}}</textarea>
+                    <textarea   class="text-black"
+                                id="text"
+                                name="summary">{{old('summary', $project->description)}}</textarea>
                     @error('summary')
                         <div id="invalidCheck3Feedback" class="invalid-feedback">
                             <span>{{$message}}</span>
@@ -83,4 +82,16 @@
         </div>
 
     </div>
+
+
+    <script>
+        // CKEditor
+    ClassicEditor
+            .create( document.querySelector( '#text' ),{
+                toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
+            })
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
 @endsection

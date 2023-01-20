@@ -67,8 +67,7 @@
             </div>
             <div class="mb-3">
                 <label for="summary" class="form-label">summary</label>
-                <textarea   class="form-control @error('summary') is-invalid @enderror"
-                            id="summary"
+                <textarea   id="text"
                             name="summary"
                             rows="5">{{old('summary')}}
                 </textarea>
@@ -78,11 +77,23 @@
                     </div>
                 @enderror
             </div>
-            <button  type="submit" class="btn btn-primary mt-5 ms-4">Invia</button>
+            <button  type="submit" class="btn btn-primary mt-2 ms-4">Invia</button>
         </form>
 
     </div>
 
 </div>
+
+
+<script>
+        // CKEditor
+    ClassicEditor
+            .create( document.querySelector( '#text' ),{
+                toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
+            })
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
 
 @endsection
