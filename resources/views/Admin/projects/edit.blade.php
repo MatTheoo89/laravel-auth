@@ -20,7 +20,7 @@
         @endif
 
         <div class="form-container">
-            <form action="{{route('admin.projects.update', $project)}}" method="POST">
+            <form action="{{route('admin.projects.update', $project)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
@@ -53,17 +53,21 @@
                 </div>
                 <div class="mb-3">
                     <label for="cover_image" class="form-label">Image project *</label>
-                    <input  type="text"
+                    <input  type="file"
+                            onchange="showImage(event)"
                             class="form-control @error('cover_image') is-invalid @enderror"
                             id="cover_image"
                             name="cover_image"
-                            value="{{old('cover_image', $project->cover_image)}}"
+                            value="{{$project->cover_image}}"
                             placeholder="cover_image">
                     @error('cover_image')
                         <div id="invalidCheck3Feedback" class="invalid-feedback">
                             <span>{{$message}}</span>
                         </div>
                     @enderror
+                    <div class="image mt-2" >
+                        <img id='output-image' width="75" src="{{$project->cover_image ? asset('storage/' . $project->cover_image) : 'https://www.pngitem.com/pimgs/m/579-5798581_image-placeholder-circle-hd-png-download.png'}}" alt="{{$project->name}}">
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="summary" class="form-label">summary *</label>
@@ -93,5 +97,10 @@
             .catch( error => {
                 console.error( error );
             } );
+    function showImage(event){
+        const tagImage = document.querySelector('#output-image');
+        tagImage.src = URL.createObjectURL(event.target.files[0]);
+	}
+
     </script>
 @endsection

@@ -8,7 +8,7 @@
     <div class="col-4 offset-4">
     <div class="card">
         <div class="image">
-            <img src="{{$project->cover_image}}" class="card-img-top" alt="{{$project->name}}">
+            <img src="{{$project->cover_image ? asset('storage/' . $project->cover_image) : 'https://www.pngitem.com/pimgs/m/579-5798581_image-placeholder-circle-hd-png-download.png'}}" class="card-img-top" alt="{{$project->name}}">
         </div>
         <div class="card-body">
             <h5 class="card-title text-black">{{$project->name}}</h5>

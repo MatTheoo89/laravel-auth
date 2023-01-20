@@ -66,7 +66,7 @@
                     </div>
                 @enderror
                 <div class="image mt-2" >
-                    <img id='output-image' width="75" src="" alt="">
+                    <img id='output-image' width="75">
                 </div>
             </div>
             <div class="mb-3">
