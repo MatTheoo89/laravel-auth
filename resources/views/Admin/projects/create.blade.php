@@ -20,7 +20,7 @@
     @endif
 
     <div class="form-container">
-        <form action="{{route('admin.projects.store')}}" method="POST">
+        <form action="{{route('admin.projects.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Name project *</label>
@@ -53,7 +53,8 @@
             </div>
             <div class="mb-3">
                 <label for="cover_image" class="form-label">Image project *</label>
-                <input  type="text"
+                <input  type="file"
+                        onchange="showImage(event)"
                         class="form-control @error('cover_image') is-invalid @enderror"
                         id="cover_image"
                         name="cover_image"
@@ -64,6 +65,9 @@
                         <span>{{$message}}</span>
                     </div>
                 @enderror
+                <div class="image mt-2" >
+                    <img id='output-image' width="75" src="" alt="">
+                </div>
             </div>
             <div class="mb-3">
                 <label for="summary" class="form-label">summary</label>
@@ -94,6 +98,11 @@
             .catch( error => {
                 console.error( error );
             } );
+    function showImage(event){
+        const tagImage = document.querySelector('#output-image');
+        tagImage.src = URL.createObjectURL(event.target.files[0]);
+	}
+
     </script>
 
 @endsection

@@ -26,7 +26,7 @@
                     <tr>
                         <td class="text-white">{{$project->id}}</td>
                         <td class="text-white">
-                            <img src="{{$project->cover_image}}" alt="" class="thumb">
+                            <img src="{{$project->cover_image ? asset('storage/' . $project->cover_image) : 'https://www.pngitem.com/pimgs/m/579-5798581_image-placeholder-circle-hd-png-download.png'}}" alt="{{$project->name}}" class="thumb">
                         </td>
                         <td class="text-white">{{$project->name}}</td>
                         <td class="text-white">{{$project->client_name}}</td>

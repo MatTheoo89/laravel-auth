@@ -10,7 +10,7 @@ class Project extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'client_name', 'cover_image', 'slug', 'summary'];
+    protected $fillable = ['name', 'client_name', 'slug', 'summary', 'cover_image', 'img_original_name'];
 
     public static function generateSlug($string){
         $slug = Str::slug($string, '-');
