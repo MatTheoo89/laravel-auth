@@ -16,7 +16,7 @@
                     <th class="text-white text-center" scope="col">Name project</th>
                     <th class="text-white text-center" scope="col">Client name</th>
                     <th class="text-white text-center" scope="col">summary</th>
-                    <th class="text-white text-center" scope="col">AZIONI</th>
+                    <th class="text-white text-center" style="width: 175px;" scope="col">AZIONI</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,17 +28,18 @@
                     </td>
                     <td class="text-white">{{$project->name}}</td>
                     <td class="text-white">{{$project->client_name}}</td>
-                    <td class="text-white">{{$project->summary}}</td>
-                    <td class="text-white">
+                    <td class="text-white"> {{$project->summary}}</td>
+                    <td class="text-white text-center" style="width: 175px;">
                         <a class="btn btn-info" href="{{route('admin.projects.show', $project)}}"><i class="fa-regular fa-eye"></i></a>
                         <a class="btn btn-warning" href="{{route('admin.projects.edit', $project)}}"><i class="fa-solid fa-pen-to-square"></i></a>
                         <form
+                        class="d-inline"
                             onsubmit="return confirm('Confermi l\'eliminazione di : {{$project->name}}')"
                             action="{{route('admin.projects.destroy', $project)}}"
                             method="post">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="d-inline btn btn-danger"><i class="fa-regular fa-trash-can"></i></button>
+                            <button type="submit" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button>
                         </form>
                     </td>
                 </tr>
